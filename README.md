@@ -1,6 +1,6 @@
 # Shapescore
 
-Site que calcula seu potencial estetico e segunda pagina de pagamento para mais resultados
+Site que calcula seu potencial estetico e em seguida mostra pagina de pagamento para mais resultados
 
 usa html,css e js 
 
