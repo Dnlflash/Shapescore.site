@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="static/style.css">
+
+<title>ShapeScore</title>
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Shape Score</h1>
+<p class="subtitle">Descubra seu potencial estético</p>
+
+<input id="altura" placeholder="Altura (cm)">
+<input id="pescoco" placeholder="Pescoço (cm)">
+<input id="cintura" placeholder="Cintura (cm)">
+
+<button onclick="analisar()">Calcular meu shape</button>
+
+<div class="progressBox">
+
+<div class="progress">
+<div class="bar"></div>
+</div>
+
+<p class="loadingText">Analisando composição corporal...</p>
+
+</div>
+
+<div class="resultBox">
+
+<div class="score" id="score"></div>
+<div class="rank" id="rank"></div>
+
+</div>
+
+<div class="paywall">
+
+<div class="paywallContent">
+
+<div class="lockIcon">🔒</div>
+
+<p><b>Análise completa bloqueada</b></p>
+
+<p style="color:#9ca3af">
+Descubra seu potencial máximo físico e como atingir
+</p>
+
+<ul style="text-align:left;color:#9ca3af">
+<li>Seu físico ideal projetado</li>
+<li>Quanto músculo você pode ganhar</li>
+<li>Plano para reduzir gordura</li>
+</ul>
+
+<button class="unlock" onclick="comprar()">
+Desbloquear análise completa
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="static/app.js">
+</script>
+
+
+</body>
+
+</html>

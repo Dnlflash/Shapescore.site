@@ -4,11 +4,42 @@ let altura = document.getElementById("altura").value
 let pescoco = document.getElementById("pescoco").value
 let cintura = document.getElementById("cintura").value
 
-let gordura = 86.010*Math.log10(cintura-pescoco)-70.041*Math.log10(altura)+36.76
+let barraterminou = false
+let variavelscore = null
 
-gordura = gordura.toFixed(1)
+function TentarMostraResultado(){
+    if (barraterminou == true && variavelscore !== null){
+        mostrarResultado(variavelscore)
+    }
+}
 
-let score = 100 - gordura
+
+
+fetch("/calcular", {
+    method: "POST",                                   
+    headers: { "Content-Type": "application/json" },   
+    body: JSON.stringify({                              
+        altura: altura,
+        pescoco: pescoco,
+        cintura: cintura
+    })
+})
+
+
+.then(
+    function(resposta){
+        return resposta.json() 
+    }   
+)
+
+.then(dados => {
+    console.log(dados.gordura, dados.score)
+    variavelscore = dados.score
+    TentarMostraResultado()   
+})
+
+
+
 
 document.querySelector(".progressBox").style.display="block"
 
@@ -20,7 +51,7 @@ let loading=[
 "Escaneando medidas...",
 "Calculando composição corporal...",
 "Comparando com banco de dados...",
-"Gerando Shape Score..."
+"Gerando Shape Score..."    
 ]
 
 let texto=document.querySelector(".loadingText")
@@ -29,7 +60,7 @@ let etapa=0
 
 let interval=setInterval(function(){
 
-progresso+=2
+progresso+=2 
 
 bar.style.width=progresso+"%"
 
@@ -39,16 +70,22 @@ etapa++
 }
 
 if(progresso>=100){
-
-clearInterval(interval)
-
-mostrarResultado(score)
-
+    clearInterval(interval)
+    barraterminou = true
+    TentarMostraResultado()
 }
 
 },40)
 
 }
+
+
+
+
+
+
+
+
 
 function mostrarResultado(score){
 
@@ -67,8 +104,11 @@ else rank="Abaixo da média"
 document.getElementById("rank").innerText=rank
 
 document.querySelector(".paywall").style.display="block"
-
 }
+
+
+
+
 
 function comprar(){
 
