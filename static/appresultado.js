@@ -15,41 +15,49 @@ fetch("/calcular",{
 
 .then(
     function(resposta){
-        resposta.json()
+        return resposta.json()
     }
 )
 
 .then(dados =>{
-    document.getElementById("bf").innerText = data.gordura + "%";
-    document.getElementById("score").innerText = data.score;
+    document.getElementById("bf").innerText = dados.gordura + "%";
+    document.getElementById("score").innerText = dados.score;
+    let gordura = dados.gordura
+
+        
+    let tipo=""
+    let target=""
+    let tempo=""
+
+    if(gordura < 12){
+    tipo="Elite / Atlético"
+    target="Manutenção (10-12%)"
+    tempo="Você já está próximo do ideal"
+    }
+    else if(gordura < 18){
+    tipo="Atlético"
+    target="10-12%"
+    tempo="2 a 4 meses"
+    }
+    else if(gordura < 25){
+    tipo="Intermediário"
+    target="12-15%"
+    tempo="3 a 6 meses"
+    }
+    else{
+    tipo="Acima do ideal"
+    target="12-15%"
+    tempo="6+ meses"
+    }
+
+    document.getElementById("type").innerText = tipo
+    document.getElementById("target").innerText = target
+    document.getElementById("time").innerText = tempo
+
+
+
+
+
 })
 
 
-let tipo=""
-let target=""
-let tempo=""
-
-if(gordura < 12){
-tipo="Elite / Atlético"
-target="Manutenção (10-12%)"
-tempo="Você já está próximo do ideal"
-}
-else if(gordura < 18){
-tipo="Atlético"
-target="10-12%"
-tempo="2 a 4 meses"
-}
-else if(gordura < 25){
-tipo="Intermediário"
-target="12-15%"
-tempo="3 a 6 meses"
-}
-else{
-tipo="Acima do ideal"
-target="12-15%"
-tempo="6+ meses"
-}
-
-document.getElementById("type").innerText = tipo
-document.getElementById("target").innerText = target
-document.getElementById("time").innerText = tempo
