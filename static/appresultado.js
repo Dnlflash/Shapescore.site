@@ -3,13 +3,27 @@ let altura = localStorage.getItem("altura")
 let pescoco = localStorage.getItem("pescoco")
 let cintura = localStorage.getItem("cintura")
 
-let gordura = 86.010*Math.log10(cintura-pescoco)-70.041*Math.log10(altura)+36.76
-gordura = gordura.toFixed(1)
+fetch("/calcular",{
+    method: "POST",
+    headers:{"Content-Type": "application/json"},
+    body: JSON.stringify({
+        altura: altura,
+        pescoco: pescoco,
+        cintura: cintura
+    })
+})
 
-let score = 100 - gordura
+.then(
+    function(resposta){
+        resposta.json()
+    }
+)
 
-document.getElementById("bf").innerText = gordura + "%"
-document.getElementById("score").innerText = Math.round(score)
+.then(dados =>{
+    document.getElementById("bf").innerText = data.gordura + "%";
+    document.getElementById("score").innerText = data.score;
+})
+
 
 let tipo=""
 let target=""
