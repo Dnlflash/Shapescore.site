@@ -6,7 +6,7 @@ usa:
 html,css,js e python com o flask
 
 baixe os arquivos e execute o python, copie a url do terminal e abra no navegador
-ou digite shapescore.vercel.app para usar
+ou digite shapescore-site.vercel.app para usar
 
 feito pra fins de estudo, manupulação de dom, reaquizições, desenvolvimento web em geral
 atualmente migrando todo o calculo do js para o flask
