@@ -10,7 +10,7 @@ padding:40px;
 }
 
 .container{
-width:420px;
+width:100%;
 background:rgba(17,24,39,0.7);
 backdrop-filter:blur(20px);
 border-radius:20px;
